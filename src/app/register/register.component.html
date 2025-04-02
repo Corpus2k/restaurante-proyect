@@ -6,7 +6,7 @@
     </h2>
     <br />
     <h3 class="text-center text-blue-500 font-bold text-lg">
-      Inicia Sesión para empezar a tragar
+      Regístrate para empezar a tragar
     </h3>
     <br />
     <div class="p-2 rounded-lg max-sm:bg-[#E9EEFF]">
@@ -14,9 +14,27 @@
         <div>
           <input
             type="text"
+            placeholder="Nombre Completo"
+            id="fullname"
+            name="fullname"
+            class="outline-0 p-2.5 w-full rounded-lg hover:bg-zinc-100 animated duration-200"
+          />
+        </div>
+        <div>
+          <input
+            type="text"
             placeholder="Usuario"
             id="username"
             name="username"
+            class="outline-0 p-2.5 w-full rounded-lg hover:bg-zinc-100 animated duration-200"
+          />
+        </div>
+        <div>
+          <input
+            type="email"
+            placeholder="Correo Electrónico"
+            id="email"
+            name="email"
             class="outline-0 p-2.5 w-full rounded-lg hover:bg-zinc-100 animated duration-200"
           />
         </div>
@@ -31,23 +49,23 @@
         </div>
         <div>
           <input
-            type="text"
-            placeholder="Hora de Entrada"
-            id="time"
-            name="time"
+            type="password"
+            placeholder="Confirmar Contraseña"
+            id="confirm_password"
+            name="confirm_password"
             class="outline-0 p-2.5 w-full rounded-lg hover:bg-zinc-100 animated duration-200"
           />
         </div>
         <button
           class="block bg-cyan-500 p-3 w-full rounded-lg cursor-pointer text-white font-medium hover:bg-white hover:text-black hover:outline-1 hover:outline-black hover:animated duration-200"
         >
-          Ingresar
+          Registrarse
         </button>
 
         <button
           class="block bg-white p-3 w-full rounded-lg cursor-pointer text-cyan-500 font-medium hover:text-cyan-500 hover:outline-1 hover:outline-cyan-500 hover:animated duration-200"
         >
-          Crear cuenta
+          Volver al login
         </button>
       </form>
     </div>
