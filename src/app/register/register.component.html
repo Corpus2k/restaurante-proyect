@@ -10,62 +10,56 @@
     </h3>
     <br />
     <div class="p-2 rounded-lg max-sm:bg-[#E9EEFF]">
-      <form class="flex flex-col gap-2.5">
+      <form
+        [formGroup]="registerForm"
+        (ngSubmit)="onSubmit()"
+        class="flex flex-col gap-2.5"
+      >
         <div>
           <input
+            formControlName="fullname"
             type="text"
             placeholder="Nombre Completo"
-            id="fullname"
-            name="fullname"
-            class="outline-0 p-2.5 w-full rounded-lg hover:bg-zinc-100 animated duration-200"
+            class="outline-0 p-2.5 w-full rounded-lg"
           />
         </div>
         <div>
           <input
+            formControlName="username"
             type="text"
             placeholder="Usuario"
-            id="username"
-            name="username"
-            class="outline-0 p-2.5 w-full rounded-lg hover:bg-zinc-100 animated duration-200"
+            class="outline-0 p-2.5 w-full rounded-lg"
           />
         </div>
         <div>
           <input
+            formControlName="email"
             type="email"
             placeholder="Correo Electrónico"
-            id="email"
-            name="email"
-            class="outline-0 p-2.5 w-full rounded-lg hover:bg-zinc-100 animated duration-200"
+            class="outline-0 p-2.5 w-full rounded-lg"
           />
         </div>
         <div>
           <input
+            formControlName="password"
             type="password"
             placeholder="Contraseña"
-            id="password"
-            name="password"
-            class="outline-0 p-2.5 w-full rounded-lg hover:bg-zinc-100 animated duration-200"
+            class="outline-0 p-2.5 w-full rounded-lg"
           />
         </div>
         <div>
           <input
+            formControlName="confirm_password"
             type="password"
             placeholder="Confirmar Contraseña"
-            id="confirm_password"
-            name="confirm_password"
-            class="outline-0 p-2.5 w-full rounded-lg hover:bg-zinc-100 animated duration-200"
+            class="outline-0 p-2.5 w-full rounded-lg"
           />
         </div>
         <button
-          class="block bg-cyan-500 p-3 w-full rounded-lg cursor-pointer text-white font-medium hover:bg-white hover:text-black hover:outline-1 hover:outline-black hover:animated duration-200"
+          type="submit"
+          class="block bg-cyan-500 p-3 w-full rounded-lg cursor-pointer text-white font-medium"
         >
           Registrarse
-        </button>
-
-        <button
-          class="block bg-white p-3 w-full rounded-lg cursor-pointer text-cyan-500 font-medium hover:text-cyan-500 hover:outline-1 hover:outline-cyan-500 hover:animated duration-200"
-        >
-          Volver al login
         </button>
       </form>
     </div>

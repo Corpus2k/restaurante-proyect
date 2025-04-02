@@ -1,13 +1,12 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { LoginComponent } from './login/login.component';
-import { RegisterComponent } from './register/register.component';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, LoginComponent, RegisterComponent],
+  standalone: true,
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
+  imports: [RouterOutlet],
 })
 export class AppComponent {
   title = 'proyect-restaurant';
