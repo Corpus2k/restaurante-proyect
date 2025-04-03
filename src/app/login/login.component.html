@@ -1,24 +1,49 @@
 <div class="flex items-center justify-center h-screen w-screen">
-    <div class="flex flex-col bg-white p-3 rounded-lg shadow-sm space-y-1.5">
-        <img src="img/logo.png" alt="puctamadre" class="object-contain">
-        <h2 class="text-center text-xl font-medium">
-            La Mejor carne, el mejor asado, el mejor lugar
-        </h2> <br>
-        <h3 class="text-center text-blue-500 font-bold text-lg">Inicia Sesión para empezar a tragar</h3>
-        <br>
-        <div class="p-2 rounded-lg max-sm:bg-[#E9EEFF]">
-            <form class="flex flex-col gap-2.5">
-                <div>
-                    <input type="text" placeholder="Usuario" id="username" name="username" class="outline-0 p-2.5 w-full rounded-lg hover:bg-zinc-100 animated duration-200">
-                </div>
-                <div>
-                    <input type="password" placeholder="Contraseña" id="password" name="password" class="outline-0 p-2.5 w-full rounded-lg hover:bg-zinc-100 animated duration-200">
-                </div>
-                <div>
-                    <input type="text" placeholder="Hora de Entrada" id="time" name="time" class="outline-0 p-2.5 w-full rounded-lg hover:bg-zinc-100 animated duration-200">
-                </div>
-                <button class="block bg-cyan-500 p-3 w-full rounded-lg cursor-pointer text-white font-medium hover:bg-white hover:text-black hover:outline-1 hover:outline-black hover:animated duration-200">Ingresar</button>
-            </form>
+  <div class="flex flex-col bg-white p-3 rounded-lg shadow-sm space-y-1.5">
+    <img src="img/logo.png" alt="puctamadre" class="object-contain" />
+    <h2 class="text-center text-xl font-medium">
+      La Mejor carne, el mejor asado, el mejor lugar
+    </h2>
+    <br />
+    <h3 class="text-center text-blue-500 font-bold text-lg">
+      Inicia Sesión para empezar a tragar
+    </h3>
+    <br />
+    <div class="p-2 rounded-lg max-sm:bg-[#E9EEFF]">
+      <form
+        [formGroup]="loginForm"
+        (ngSubmit)="onSubmit()"
+        class="flex flex-col gap-2.5"
+      >
+        <div>
+          <input
+            formControlName="username"
+            type="text"
+            placeholder="Usuario"
+            class="outline-0 p-2.5 w-full rounded-lg hover:bg-zinc-100"
+          />
         </div>
+        <div>
+          <input
+            formControlName="password"
+            type="password"
+            placeholder="Contraseña"
+            class="outline-0 p-2.5 w-full rounded-lg hover:bg-zinc-100"
+          />
+        </div>
+        <button
+          class="block bg-cyan-500 p-3 w-full rounded-lg cursor-pointer text-white font-medium hover:bg-white hover:text-black"
+        >
+          Ingresar
+        </button>
+        <button
+          (click)="navigateToRegister()"
+          type="button"
+          class="block bg-white p-3 w-full rounded-lg cursor-pointer text-cyan-500 font-medium"
+        >
+          Crear cuenta
+        </button>
+      </form>
     </div>
+  </div>
 </div>

@@ -1,12 +1,14 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { LoginComponent } from './login/login.component';
+import { CommonModule } from '@angular/common'; // Importar CommonModule
+import { FormsModule } from '@angular/forms'; // Importar FormsModule
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, LoginComponent],
+  standalone: true,
   templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+  styleUrls: ['./app.component.css'],
+  imports: [RouterOutlet, CommonModule, FormsModule],
 })
 export class AppComponent {
   title = 'proyect-restaurant';

@@ -1,0 +1,80 @@
+/* Estilos generales */
+.container {
+  margin: 20px;
+}
+
+.input-group {
+  margin-bottom: 20px;
+}
+
+.note {
+  font-size: 0.8rem;
+  color: #555;
+}
+
+.dropdown {
+  margin-bottom: 20px;
+}
+
+.custom-seats-input {
+  margin-top: 10px;
+}
+
+.seat-grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.seat {
+  width: 50px;
+  height: 50px;
+  background-color: #ccc;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  border-radius: 5px;
+  font-size: 1rem;
+}
+
+.seat.available {
+  background-color: #2655e0; /* Azul */
+}
+
+.seat.notAvailable {
+  background-color: #e03d6e; /* Rojo */
+}
+
+.seat.selected {
+  background-color: #ffcd03; /* Amarillo cuando está seleccionado */
+}
+
+.color-key {
+  margin-top: 20px;
+}
+
+.blue-box {
+  width: 20px;
+  height: 20px;
+  background-color: #2655e0;
+  display: inline-block;
+  margin-right: 5px;
+}
+
+.red-box {
+  width: 20px;
+  height: 20px;
+  background-color: #e03d6e;
+  display: inline-block;
+  margin-right: 5px;
+}
+
+button {
+  margin-top: 20px;
+}
+
+form {
+  margin-top: 30px;
+}

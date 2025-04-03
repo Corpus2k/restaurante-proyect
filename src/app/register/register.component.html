@@ -1,0 +1,67 @@
+<div class="flex items-center justify-center h-screen w-screen">
+  <div class="flex flex-col bg-white p-3 rounded-lg shadow-sm space-y-1.5">
+    <img src="img/logo.png" alt="puctamadre" class="object-contain" />
+    <h2 class="text-center text-xl font-medium">
+      La Mejor carne, el mejor asado, el mejor lugar
+    </h2>
+    <br />
+    <h3 class="text-center text-blue-500 font-bold text-lg">
+      Regístrate para empezar a tragar
+    </h3>
+    <br />
+    <div class="p-2 rounded-lg max-sm:bg-[#E9EEFF]">
+      <form
+        [formGroup]="registerForm"
+        (ngSubmit)="onSubmit()"
+        class="flex flex-col gap-2.5"
+      >
+        <div>
+          <input
+            formControlName="fullname"
+            type="text"
+            placeholder="Nombre Completo"
+            class="outline-0 p-2.5 w-full rounded-lg"
+          />
+        </div>
+        <div>
+          <input
+            formControlName="username"
+            type="text"
+            placeholder="Usuario"
+            class="outline-0 p-2.5 w-full rounded-lg"
+          />
+        </div>
+        <div>
+          <input
+            formControlName="email"
+            type="email"
+            placeholder="Correo Electrónico"
+            class="outline-0 p-2.5 w-full rounded-lg"
+          />
+        </div>
+        <div>
+          <input
+            formControlName="password"
+            type="password"
+            placeholder="Contraseña"
+            class="outline-0 p-2.5 w-full rounded-lg"
+          />
+        </div>
+        <div>
+          <input
+            formControlName="confirm_password"
+            type="password"
+            placeholder="Confirmar Contraseña"
+            class="outline-0 p-2.5 w-full rounded-lg"
+          />
+        </div>
+        <button
+          type="submit"
+          class="block bg-cyan-500 p-3 w-full rounded-lg cursor-pointer text-white font-medium"
+        >
+          Registrarse
+        </button>
+      </form>
+    </div>
+  </div>
+</div>
