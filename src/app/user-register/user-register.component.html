@@ -1,0 +1,82 @@
+<img src="img/logo.png" alt="Logo" class="object-contain mx-auto mb-6" />
+
+<div class="max-w-xl mx-auto px-4 py-6 bg-white shadow-lg rounded-lg">
+  <h2 class="text-2xl font-semibold text-center mb-4">Reserva de Asientos</h2>
+
+  <!-- Campo de nombre de usuario -->
+  <div class="mb-4">
+    <label for="username" class="block text-sm font-medium text-gray-700"
+      >Nombre de Usuario</label
+    >
+    <input
+      type="text"
+      id="username"
+      [(ngModel)]="username"
+      class="mt-2 block w-full px-4 py-2 rounded-lg border-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+      placeholder="Ingresa tu nombre"
+    />
+  </div>
+
+  <div class="mb-4">
+    <label for="seats" class="block text-sm font-medium text-gray-700"
+      >Número de asientos</label
+    >
+    <select
+      id="seats"
+      [(ngModel)]="selectedSeatsCount"
+      class="mt-2 block w-full px-4 py-2 rounded-lg border-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+    >
+      <option value="3">3 Asientos</option>
+      <option value="6">6 Asientos</option>
+      <option value="9">9 Asientos</option>
+      <option value="12">12 Asientos</option>
+      <option value="custom">Personalizado</option>
+    </select>
+  </div>
+
+  <div *ngIf="selectedSeatsCount === 'custom'" class="mb-4">
+    <label for="customSeats" class="block text-sm font-medium text-gray-700"
+      >Número de asientos personalizados</label
+    >
+    <input
+      type="number"
+      id="customSeats"
+      [(ngModel)]="customSeats"
+      min="1"
+      max="22"
+      class="mt-2 block w-full px-4 py-2 rounded-lg border-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+    />
+  </div>
+
+  <!-- Título para escoger los números de mesas disponibles -->
+  <h3 class="text-xl font-semibold text-center mb-4">
+    Escoge los números de las mesas disponibles
+  </h3>
+
+  <div class="grid grid-cols-3 gap-2">
+    <div *ngFor="let seat of seats; let i = index" class="relative">
+      <div
+        [ngClass]="{
+          'bg-blue-500 text-white': seat.available && !seat.selected,
+          'bg-red-500 text-white cursor-not-allowed': !seat.available,
+          'bg-red-600 text-white': seat.selected
+        }"
+        class="flex items-center justify-center p-4 rounded-lg cursor-pointer"
+        (click)="selectSeat(i)"
+        [class.cursor-not-allowed]="!seat.available"
+      >
+        <span>{{ i + 1 }}</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="mt-6">
+    <button
+      (click)="startOrder()"
+      [disabled]="!canSubmit()"
+      class="w-full py-2 px-4 bg-indigo-500 text-white rounded-lg hover:bg-indigo-600 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+    >
+      Comenzar Pedido
+    </button>
+  </div>
+</div>

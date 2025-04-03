@@ -37,8 +37,9 @@ export class LoginComponent {
       const success = this.authService.login(username, password);
       if (success) {
         alert('Inicio de sesión exitoso');
+        this.router.navigate(['/user-register']);
       } else {
-        alert('Usuario o contraseña incorrectos');
+        alert('Credenciales incorrectas. Verifica tu usuario y contraseña.');
       }
     }
   }
