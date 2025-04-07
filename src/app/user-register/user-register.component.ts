@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-user-register',
@@ -15,7 +16,7 @@ export class UserRegisterComponent {
   customSeats: number = 1;
   seats: Array<{ available: boolean; selected: boolean }> = [];
 
-  constructor() {
+  constructor(private router: Router) {
     this.loadSeats();
   }
 
@@ -88,14 +89,26 @@ export class UserRegisterComponent {
       .map((seat, index) => (seat.selected ? index + 1 : null))
       .filter((seat) => seat !== null);
 
-    alert(
-      `✅ Pedido realizado con éxito ✅\n\n` +
-        `📌 Nombre: ${this.username}\n` +
-        `📌 Número de asientos: ${this.selectedSeatsCount}\n` +
-        `📌 Mesas seleccionadas: ${selectedSeats.join(', ')}`
-    );
+    console.log('Enviando datos de estado:', {
+      username: this.username,
+      seatCount:
+        this.selectedSeatsCount === 'custom'
+          ? this.customSeats
+          : this.selectedSeatsCount,
+      selectedSeats: selectedSeats,
+    });
 
-    this.resetForm();
+    // Navegar al componente category-interface
+    this.router.navigate(['/category-interface'], {
+      state: {
+        username: this.username,
+        seatCount:
+          this.selectedSeatsCount === 'custom'
+            ? this.customSeats
+            : this.selectedSeatsCount,
+        selectedSeats: selectedSeats,
+      },
+    });
   }
 
   resetForm() {
