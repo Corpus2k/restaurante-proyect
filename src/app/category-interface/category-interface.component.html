@@ -1,0 +1,78 @@
+<div class="container">
+  <!-- Sidebar -->
+  <div class="sidebar">
+    <div class="logo text-white text-center">
+      <img src="img/logo.png" alt="Logo" class="w-35 h-35 object-contain" />
+      <h3>STEAKHOUSE</h3>
+      <p>RESTAURANT</p>
+    </div>
+    <div class="menu">
+      <button *ngFor="let cat of categories" (click)="selectCategory(cat)">
+        {{ categoryDisplayNames[cat] || (cat | titlecase) }}
+      </button>
+    </div>
+  </div>
+
+  <!-- Main content -->
+  <div class="main">
+    <div class="info">
+      <p>
+        Para: <strong>{{ username || "Usuario no definido" }}</strong>
+      </p>
+      <p>
+        Categoría:
+        <strong>{{
+          (selectedCategory
+            ? categoryDisplayNames[selectedCategory]
+            : "SIN SELECCIONAR"
+          ) | uppercase
+        }}</strong>
+      </p>
+      <p>
+        Mesa: <strong>{{ seatCount || 0 }}</strong>
+      </p>
+      <p>
+        Asientos:
+        <strong>{{
+          selectedSeats.join(", ") || "Ningún asiento seleccionado"
+        }}</strong>
+      </p>
+    </div>
+
+    <div class="products" *ngIf="selectedCategory; else emptySelection">
+      <h2>Selecciona un plato:</h2>
+      <div class="product-list">
+        <div
+          class="product"
+          *ngFor="let prod of products"
+          (click)="addToCart(prod)"
+        >
+          {{ prod.nombre }} - S/. {{ prod.precio }}
+        </div>
+      </div>
+    </div>
+
+    <ng-template #emptySelection>
+      <div class="center-text">
+        <h1>SELECCIONE ALGUNA CATEGORIA</h1>
+        <img src="img/logo.png" alt="Logo" class="w-32 mx-auto" />
+      </div>
+    </ng-template>
+  </div>
+
+  <!-- Cart -->
+  <div class="cart">
+    <p>Lista de órdenes: {{ cart.length }} items</p>
+    <div *ngIf="cart.length === 0" class="empty-cart">
+      Aun no has añadido ningún pedido
+      <img src="img/logo.png" alt="Logo" class="w-24 mx-auto mt-2" />
+    </div>
+    <ul *ngIf="cart.length > 0">
+      <li *ngFor="let item of cart; index as i">
+        {{ item.nombre }} - S/. {{ item.precio }}
+        <button (click)="removeFromCart(i)">🗑</button>
+      </li>
+    </ul>
+    <button class="pay-btn">PAGAR</button>
+  </div>
+</div>
