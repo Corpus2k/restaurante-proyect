@@ -62,17 +62,28 @@
 
   <!-- Cart -->
   <div class="cart">
-    <p>Lista de órdenes: {{ cart.length }} items</p>
+    <p>Lista de órdenes: {{ cart.length }} item(s)</p>
     <div *ngIf="cart.length === 0" class="empty-cart">
       Aun no has añadido ningún pedido
-      <img src="img/logo.png" alt="Logo" class="w-24 mx-auto mt-2" />
     </div>
+
     <ul *ngIf="cart.length > 0">
       <li *ngFor="let item of cart; index as i">
-        {{ item.nombre }} - S/. {{ item.precio }}
-        <button (click)="removeFromCart(i)">🗑</button>
+        <span class="product-item"
+          >{{ item.nombre }} - S/. {{ item.precio }}</span
+        >
+        <button class="icon-btn" (click)="removeFromCart(i)" title="Eliminar">
+          🗑️
+        </button>
       </li>
     </ul>
+
+    <div class="total" *ngIf="cart.length > 0">
+      <p>
+        <strong>Total: S/. {{ total.toFixed(2) }}</strong>
+      </p>
+    </div>
+
     <button class="pay-btn">PAGAR</button>
   </div>
 </div>

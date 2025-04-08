@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { Router, ActivatedRoute } from '@angular/router';
+import { Router } from '@angular/router';
 import { CATEGORIES } from '../data/products';
 
 @Component({
@@ -15,13 +15,12 @@ export class CategoryInterfaceComponent {
   seatCount: number | string = 0;
   selectedSeats: number[] = [];
 
-  // Categorías y productos (auto-generados desde CATEGORIES)
   categories = Object.keys(CATEGORIES);
   selectedCategory: string = '';
   products: any[] = [];
   cart: any[] = [];
+  total: number = 0;
 
-  // Nombres amigables para las categorías (personalizados)
   categoryDisplayNames: Record<string, string> = {
     entradas: 'Entradas 🍽️',
     principales: 'Platos Principales 🥘',
@@ -34,7 +33,7 @@ export class CategoryInterfaceComponent {
     postres: 'Postres 🍰',
   };
 
-  constructor(private router: Router, private route: ActivatedRoute) {
+  constructor(private router: Router) {
     const navigation = this.router.getCurrentNavigation();
     if (navigation?.extras.state) {
       this.username = navigation.extras.state['username'];
@@ -50,9 +49,15 @@ export class CategoryInterfaceComponent {
 
   addToCart(product: any) {
     this.cart.push(product);
+    this.updateTotal();
   }
 
   removeFromCart(index: number) {
     this.cart.splice(index, 1);
+    this.updateTotal();
+  }
+
+  updateTotal() {
+    this.total = this.cart.reduce((acc, prod) => acc + prod.precio, 0);
   }
 }
