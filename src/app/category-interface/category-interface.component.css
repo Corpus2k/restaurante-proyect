@@ -164,7 +164,7 @@ body {
   background-color: #2359f4;
   color: white;
   padding: 10px;
-  width: 100%;
+  width: min-content;
   font-size: 1rem;
   border: none;
   border-radius: 5px;
@@ -210,6 +210,20 @@ body {
     width: 100%;
     margin-top: 20px;
   }
+}
+.delete-btn {
+  background-color: transparent;
+  color: #e63946;
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+  padding: 4px 8px;
+  transition: all 0.2s ease;
+}
+.delete-btn:hover {
+  color: white;
+  background-color: #e63946;
+  border-radius: 5px;
 }
 
 @media (max-width: 480px) {
