@@ -1,4 +1,4 @@
-/* RESET CSS: Normaliza el estilo en todos los navegadores */
+/* RESET */
 *,
 *::before,
 *::after {
@@ -7,24 +7,36 @@
   box-sizing: border-box;
 }
 
-/* Estructura general */
+/* Base */
 body {
   font-family: "Arial", sans-serif;
-  line-height: 1.6;
-  color: #333;
   background-color: #f9fafb;
-  padding: 0;
-  margin: 0;
+  color: #333;
 }
 
 .container {
   display: flex;
   flex-wrap: wrap;
   height: 100vh;
-  min-height: 100%;
-  font-family: Arial, sans-serif;
+  position: relative;
 }
 
+/* Botón hamburguesa */
+.hamburger {
+  display: none;
+  font-size: 2rem;
+  background: none;
+  border: none;
+  color: #f42323;
+  padding: 10px;
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  z-index: 1000;
+  cursor: pointer;
+}
+
+/* Sidebar */
 .sidebar {
   width: 180px;
   background-color: #2359f4;
@@ -34,20 +46,16 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  font-family: "Arial", sans-serif;
+  transition: left 0.3s ease;
+  z-index: 999;
 }
 
-.sidebar .flex {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 0;
-  border-radius: 8px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  text-align: center;
+.sidebar .logo {
+  position: relative;
+  z-index: 1;
 }
 
-.sidebar .flex img {
+.sidebar .logo img {
   width: 70px;
   height: 70px;
   object-fit: contain;
@@ -57,15 +65,12 @@ body {
 .sidebar h3 {
   font-size: 1.4rem;
   font-weight: bold;
-  margin: 0;
 }
 
 .sidebar p {
   font-size: 0.9rem;
   text-transform: uppercase;
   letter-spacing: 1px;
-  margin: 0;
-  margin-top: 5px;
 }
 
 .menu button {
@@ -86,11 +91,11 @@ body {
   background-color: #e0e0e0;
 }
 
-/* Main content */
+/* Main */
 .main {
   flex: 2;
   padding: 2rem;
-  background-color: #ffffff;
+  background-color: #fff;
   overflow-y: auto;
 }
 
@@ -164,7 +169,6 @@ body {
   background-color: #2359f4;
   color: white;
   padding: 10px;
-  width: min-content;
   font-size: 1rem;
   border: none;
   border-radius: 5px;
@@ -186,44 +190,45 @@ body {
   width: 80px;
   margin-top: 10px;
 }
-/* Media Queries para dispositivos móviles */
+
+/* Responsive */
 @media (max-width: 768px) {
   .container {
     flex-direction: column;
     height: auto;
   }
 
+  .hamburger {
+    display: block;
+  }
+
   .sidebar {
-    width: 100%;
-    padding: 10px;
+    position: fixed;
+    top: 0;
+    left: -100%;
+    height: 100vh;
+    z-index: 999;
+    width: 70%;
+    max-width: 250px;
+  }
+
+  .sidebar.open {
+    left: 0;
   }
 
   .main {
+    margin-top: 60px;
     padding: 1rem;
-  }
-
-  .product-list {
-    grid-template-columns: 1fr 1fr;
   }
 
   .cart {
     width: 100%;
     margin-top: 20px;
   }
-}
-.delete-btn {
-  background-color: transparent;
-  color: #e63946;
-  border: none;
-  cursor: pointer;
-  font-size: 14px;
-  padding: 4px 8px;
-  transition: all 0.2s ease;
-}
-.delete-btn:hover {
-  color: white;
-  background-color: #e63946;
-  border-radius: 5px;
+
+  .product-list {
+    grid-template-columns: 1fr 1fr;
+  }
 }
 
 @media (max-width: 480px) {
@@ -233,9 +238,5 @@ body {
 
   .product {
     padding: 15px;
-  }
-
-  .cart {
-    width: 100%;
   }
 }
