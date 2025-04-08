@@ -21,13 +21,15 @@ export class CategoryInterfaceComponent {
   cart: any[] = [];
   total: number = 0;
 
+  isSidebarOpen: boolean = false;
+
   categoryDisplayNames: Record<string, string> = {
     entradas: 'Entradas 🍽️',
     principales: 'Platos Principales 🥘',
     parrilla: 'Parrilla 🔥',
     pollo_brasa: 'Pollo a la Brasa 🍗',
     chaufa_wok: 'Chaufa y Wok 🍚🔥',
-    extras: 'Extras y Acompañamientos 🍟',
+    extras: 'Extras y Acompañamientos �',
     bebidas_frias: 'Bebidas Frías 🥤',
     bebidas_calientes: 'Bebidas Calientes ☕',
     postres: 'Postres 🍰',
@@ -45,19 +47,44 @@ export class CategoryInterfaceComponent {
   selectCategory(category: string) {
     this.selectedCategory = category;
     this.products = CATEGORIES[category as keyof typeof CATEGORIES];
+    this.isSidebarOpen = false;
   }
 
   addToCart(product: any) {
-    this.cart.push(product);
+    const existingProduct = this.cart.find(
+      (item) => item.nombre === product.nombre
+    );
+
+    if (existingProduct) {
+      existingProduct.cantidad = (existingProduct.cantidad || 1) + 1;
+    } else {
+      product.cantidad = 1;
+      this.cart.push(product);
+    }
+
     this.updateTotal();
   }
 
   removeFromCart(index: number) {
-    this.cart.splice(index, 1);
+    const product = this.cart[index];
+
+    if (product.cantidad > 1) {
+      product.cantidad -= 1;
+    } else {
+      this.cart.splice(index, 1);
+    }
+
     this.updateTotal();
   }
 
   updateTotal() {
-    this.total = this.cart.reduce((acc, prod) => acc + prod.precio, 0);
+    this.total = this.cart.reduce(
+      (acc, prod) => acc + prod.precio * prod.cantidad,
+      0
+    );
+  }
+
+  toggleSidebar() {
+    this.isSidebarOpen = !this.isSidebarOpen;
   }
 }
