@@ -6,6 +6,10 @@ export default defineConfig({
   plugins: [
     VitePWA({
       registerType: 'autoUpdate',
+      devOptions: {
+        enabled: true, // ← esto activa el SW en modo dev
+        type: 'module', // ← esto permite que funcione correctamente
+      },
       includeAssets: ['favicon.ico'],
       manifest: {
         name: 'Restaurante App',
