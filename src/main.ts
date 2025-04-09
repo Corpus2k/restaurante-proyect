@@ -7,6 +7,9 @@ bootstrapApplication(AppComponent, appConfig).catch((err) =>
 );
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {
-    navigator.serviceWorker.register('/sw.js');
+    navigator.serviceWorker
+      .register('/dev-sw.js?dev-sw', { type: 'module' })
+      .then(() => console.log('SW registrado correctamente'))
+      .catch((err) => console.warn('SW error', err));
   });
 }
