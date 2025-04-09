@@ -7,8 +7,8 @@ export default defineConfig({
     VitePWA({
       registerType: 'autoUpdate',
       devOptions: {
-        enabled: true, // ← esto activa el SW en modo dev
-        type: 'module', // ← esto permite que funcione correctamente
+        enabled: true,
+        type: 'module',
       },
       includeAssets: ['favicon.ico'],
       manifest: {
