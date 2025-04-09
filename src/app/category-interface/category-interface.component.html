@@ -5,7 +5,9 @@
   <!-- Sidebar -->
   <div class="sidebar" [ngClass]="{ open: isSidebarOpen }">
     <div class="logo text-white text-center">
-      <img src="img/logo.png" alt="Logo" class="w-35 h-35 object-contain" />
+      <div class="flex items-center justify-center">
+        <img src="img/logo.png" alt="Logo" class="w-35 h-35 object-contain rounded-lg" />
+      </div>
       <h3>STEAKHOUSE</h3>
       <p>RESTAURANT</p>
     </div>
@@ -87,6 +89,7 @@
       </p>
     </div>
 
-    <button class="pay-btn">PAGAR</button>
+    <!--Aca estoy llamando a la funcion del TS nadie toque el boton crj-->
+    <button class="pay-btn" (click)="generarBoleta()">PAGAR</button>
   </div>
 </div>
