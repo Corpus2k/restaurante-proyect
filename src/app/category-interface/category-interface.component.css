@@ -1,4 +1,3 @@
-/* RESET */
 *,
 *::before,
 *::after {
@@ -7,7 +6,6 @@
   box-sizing: border-box;
 }
 
-/* Base */
 body {
   font-family: "Arial", sans-serif;
   background-color: #f9fafb;
@@ -21,7 +19,11 @@ body {
   position: relative;
 }
 
-/* Botón hamburguesa */
+.container {
+  display: flex;
+  max-width: 1200px;
+  margin: 0 auto;
+}
 .hamburger {
   display: none;
   font-size: 2rem;
