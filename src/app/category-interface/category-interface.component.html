@@ -1,8 +1,17 @@
 <div class="container">
+  <!-- Botón hamburguesa -->
+  <button class="hamburger" (click)="toggleSidebar()">☰</button>
+
   <!-- Sidebar -->
-  <div class="sidebar">
+  <div class="sidebar" [ngClass]="{ open: isSidebarOpen }">
     <div class="logo text-white text-center">
-      <img src="img/logo.png" alt="Logo" class="w-35 h-35 object-contain" />
+      <div class="flex items-center justify-center">
+        <img
+          src="img/logo.png"
+          alt="Logo"
+          class="w-35 h-35 object-contain rounded-lg"
+        />
+      </div>
       <h3>STEAKHOUSE</h3>
       <p>RESTAURANT</p>
     </div>
@@ -62,17 +71,31 @@
 
   <!-- Cart -->
   <div class="cart">
-    <p>Lista de órdenes: {{ cart.length }} items</p>
+    <p>Lista de órdenes: {{ cart.length }} item(s)</p>
     <div *ngIf="cart.length === 0" class="empty-cart">
       Aun no has añadido ningún pedido
-      <img src="img/logo.png" alt="Logo" class="w-24 mx-auto mt-2" />
     </div>
+
     <ul *ngIf="cart.length > 0">
       <li *ngFor="let item of cart; index as i">
-        {{ item.nombre }} - S/. {{ item.precio }}
-        <button (click)="removeFromCart(i)">🗑</button>
+        <strong>
+          <span class="product-item">
+            {{ item.nombre }} - S/. {{ item.precio }} - {{ item.cantidad }}
+          </span></strong
+        >
+        <button class="icon-btn" (click)="removeFromCart(i)" title="Eliminar">
+          🗑️
+        </button>
       </li>
     </ul>
-    <button class="pay-btn">PAGAR</button>
+
+    <div class="total" *ngIf="cart.length > 0">
+      <p>
+        <strong>Total: S/. {{ total.toFixed(2) }}</strong>
+      </p>
+    </div>
+
+    <!--Aca estoy llamando a la funcion del TS nadie toque el boton crj-->
+    <button class="pay-btn" (click)="generarBoleta()">PAGAR</button>
   </div>
 </div>
