@@ -10,33 +10,59 @@
   },
   "private": true,
   "dependencies": {
-    "@angular/common": "^19.2.0",
-    "@angular/compiler": "^19.2.0",
-    "@angular/core": "^19.2.0",
-    "@angular/forms": "^19.2.0",
-    "@angular/platform-browser": "^19.2.0",
-    "@angular/platform-browser-dynamic": "^19.2.0",
-    "@angular/router": "^19.2.0",
+    "@angular/cdk": "^19.2.8",
+    "@angular/common": "^19.2.5",
+    "@angular/compiler": "^19.2.5",
+    "@angular/core": "^19.2.5",
+    "@angular/fire": "^19.0.0",
+    "@angular/forms": "^19.2.5",
+    "@angular/material": "^19.2.8",
+    "@angular/platform-browser": "^19.2.5",
+    "@angular/platform-browser-dynamic": "^19.2.5",
+    "@angular/router": "^19.2.5",
+    "@firebasegen/default-connector": "file:dataconnect-generated/js/default-connector",
     "@tailwindcss/postcss": "^4.1.0",
+    "bootstrap": "^5.3.5",
     "jspdf": "^3.0.1",
     "jspdf-autotable": "^5.0.2",
     "postcss": "^8.5.3",
     "rxjs": "~7.8.0",
-    "tailwindcss": "^4.1.0",
     "tslib": "^2.3.0",
-    "zone.js": "~0.15.0"
+    "zone.js": "~0.15.0",
+    "@tanstack-query-firebase/angular": "^1.0.0",
+    "@tanstack/angular-query-experimental": "5.66.4"
   },
   "devDependencies": {
-    "@angular-devkit/build-angular": "^19.2.5",
-    "@angular/cli": "^19.2.5",
-    "@angular/compiler-cli": "^19.2.0",
+    "@angular-devkit/build-angular": "^19.2.6",
+    "@angular/cli": "^19.2.6",
+    "@angular/compiler-cli": "^19.2.5",
     "@types/jasmine": "~5.1.0",
+    "autoprefixer": "^10.4.21",
     "jasmine-core": "~5.6.0",
     "karma": "~6.4.0",
     "karma-chrome-launcher": "~3.2.0",
     "karma-coverage": "~2.2.0",
     "karma-jasmine": "~5.1.0",
     "karma-jasmine-html-reporter": "~2.1.0",
+    "postcss": "^8.5.3",
+    "tailwindcss": "^4.1.3",
+    "typescript": "~5.7.2"
+  },
+  "description": "This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.2.5.",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Corpus2k/restaurante-proyect.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Corpus2k/restaurante-proyect/issues"
+  },
+  "homepage": "https://github.com/Corpus2k/restaurante-proyect#readme"
+}
+=======
     "typescript": "~5.7.2",
     "vite-plugin-pwa": "^1.0.0"
   }
